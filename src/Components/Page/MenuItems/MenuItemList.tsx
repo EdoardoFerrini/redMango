@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { menuItemModel } from '../../../Interfaces';
+import MenuItemCard from './MenuItemCard';
 
 function MenuItemList() {
     const [menuItems, setMenuItems] = useState<menuItemModel[]>([]);
@@ -14,8 +15,10 @@ function MenuItemList() {
     });
   },[])
   return (
-    <div>
-      
+    <div className="container-row">
+      {menuItems.length > 0 && menuItems.map((menuItem, index)=>
+        <MenuItemCard menuItem={menuItem} key={index}/>
+      ) }
     </div>
   )
 }

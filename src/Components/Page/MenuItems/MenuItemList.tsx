@@ -15,7 +15,7 @@ function MenuItemList() {
     });
   },[])
   return (
-    <div className="container-row">
+    <div className="container row">
       {menuItems.length > 0 && menuItems.map((menuItem, index)=>
         <MenuItemCard menuItem={menuItem} key={index}/>
       ) }

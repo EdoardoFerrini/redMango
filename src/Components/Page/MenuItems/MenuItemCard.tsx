@@ -1,5 +1,6 @@
 import React from 'react'
 import { menuItemModel } from '../../../Interfaces'
+import { Link } from 'react-router-dom'
 
 interface MenuItemProp {
     menuItem: menuItemModel
@@ -14,14 +15,15 @@ function MenuItemCard({menuItem}: MenuItemProp) {
       >
         <div className="card-body pt-2">
           <div className="row col-10 offset-1 p-4">
-            <img
-              src={menuItem.image}
-              style={{ borderRadius: "50%" }}
-              alt=""
-              className="w-100 mt-5 image-box"
-            />
+            <Link to={`/menuItemDetails/${menuItem.id}`}>
+              <img
+                src={menuItem.image}
+                style={{ borderRadius: "50%" }}
+                alt=""
+                className="w-100 mt-5 image-box"
+              />
+            </Link>
           </div>
-
           {menuItem.specialTag && menuItem.specialTag.length > 0 && (<i
             className="bi bi-star btn btn-success"
             style={{
@@ -51,7 +53,13 @@ function MenuItemCard({menuItem}: MenuItemProp) {
           ></i>
 
           <div className="text-center">
-            <p className="card-title m-0 text-success fs-3">{menuItem.name}</p>
+            <p className="card-title m-0 text-success fs-3">
+              <Link to={`/menuItemDetails/${menuItem.id}`}
+              style={{textDecoration : "none", color: "green"}}
+              >
+                {menuItem.name}
+              </Link>
+            </p>
             <p className="badge bg-secondary" style={{ fontSize: "12px" }}>
               {menuItem.category}
             </p>

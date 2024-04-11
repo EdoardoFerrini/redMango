@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGetMenuItemByIdQuery } from '../Api/menuItemApi';
 import { useUpdateShoppingCartMutation } from '../Api/shoppingCartApi';
+import { MainLoader } from '../Components/Page/Common';
 function MenuItemDetails() {
   const {menuItemId} = useParams();
   const {data, isLoading} = useGetMenuItemByIdQuery(menuItemId);
@@ -28,6 +29,7 @@ function MenuItemDetails() {
       userId: "966dbf55-eb00-4625-a23e-3c8926df68ab"})
 
     console.log(response)
+    setIsAddingToCart(false)
   }
   
   return (
@@ -73,11 +75,15 @@ function MenuItemDetails() {
         </span>
         <div className="row pt-4">
           <div className="col-5">
-            <button 
+            {isAddingToCart? (
+            <button disabled className='btn btn-success form-control'>
+              <MainLoader />
+            </button>): (<button 
               className="btn btn-success form-control"
               onClick={()=>handleAddtoCart(data.result?.id)}>
               Add to Cart
-            </button>
+            </button>)}
+            
           </div>
 
           <div className="col-5 ">
@@ -101,7 +107,7 @@ function MenuItemDetails() {
         className="d-flex justify-content-center"
         style={{width: "100%"}}
         >
-        <div>Loading.....</div>
+        <MainLoader />
       </div>)}
 
 

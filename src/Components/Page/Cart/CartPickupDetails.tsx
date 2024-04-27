@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { cartItemModel } from "../../Interfaces";
+import { cartItemModel } from "../../../Interfaces";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Storage/Redux/store";
-import { inputHelper } from "../../Helper";
-import { MiniLoader } from "../../Components/Page/Common";
+import { RootState } from "../../../Storage/Redux/store";
+import { inputHelper } from "../../../Helper";
+import { MiniLoader } from "../Common";
 
 function CartPickupDetails() {
   const [loading, setLoading] = useState(false);
